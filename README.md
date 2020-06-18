@@ -1,1 +1,3 @@
-20203148 Minsu Cha
+20203148 Cha Minsu
+
+Kookmin Univ. SW
