@@ -15,11 +15,10 @@ def application(environ, start_response):
 	    	'x * y': Y,
 		}
 	else:
-		A = ''
-		B = ''
+		A = 'Please input both x and y'
 		response_body = html % {
 	    	'x + y': A,
-	    	'x * y': B, 
+	    	'x * y': A, 
 		} 
 
         start_response('200 OK', [
