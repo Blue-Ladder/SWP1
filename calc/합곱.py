@@ -1,3 +1,4 @@
+from cgi import parse_qs
 from template import html
 
 def application(environ, start_response): 
@@ -5,13 +6,13 @@ def application(environ, start_response):
         a = d.get('a', [''])[0]
         b = d.get('b', [''])[0] 
   
-	if '' not in [a, b]:        
+	try:        
                 a, b = int(a), int(b)
 		X = a+b
 		Y = a*b
-	else:
-		X = 'Please input both x and y'
-		Y = 'Please input both x and y'
+	except ValueError:
+		X = 'Please input both x and y. You can only input integer'
+		Y = 'Please input both x and y. You can only input integer'
 	response_body = html % {'x + y':X, 'x * y':Y}
 
 
@@ -20,4 +21,3 @@ def application(environ, start_response):
                 ('Content-Length', str(len(response_body)))
         ])
         return [response_body]
-
